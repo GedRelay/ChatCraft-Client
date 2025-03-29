@@ -17,10 +17,12 @@ class HttpManager :
     Q_OBJECT
 public:
     ~HttpManager();
+    void PostHttpReq(QUrl url, QJsonObject json, RequireId req_id, Modules mod);
+
 private:
     HttpManager();
     QNetworkAccessManager _manager;
-    void PostHttpReq(QUrl url, QJsonObject json, RequireId req_id, Modules mod);
+
 
 private slots:
     void slot_http_finish(RequireId req_id, QString res, ErrorCodes err, Modules mod);

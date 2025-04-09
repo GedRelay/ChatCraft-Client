@@ -13,3 +13,31 @@ QDialog#LoginDialog, #RegisterDialog{
 #error_label[state='error']{
     color:red;
 }
+
+#password_visible[state='unvisible']{
+    border: none;
+    border-image: url(:/assets/pic/unvisible.png);
+}
+
+#password2_visible[state='unvisible']{
+    border: none;
+    border-image: url(:/assets/pic/unvisible.png);
+}
+
+#password_visible[state='visible']{
+    border: none;
+    border-image: url(:/assets/pic/visible.png);
+}
+
+#password2_visible[state='visible']{
+    border: none;
+    border-image: url(:/assets/pic/visible.png);
+}
+
+#forget_btn{
+    border: none;
+}
+
+#forget_btn:hover{
+    color: #0000ff;
+}

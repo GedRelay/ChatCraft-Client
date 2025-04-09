@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>style/stylesheet.qss</file>
         <file>assets/pic/lg.png</file>
+        <file>assets/pic/visible.png</file>
+        <file>assets/pic/unvisible.png</file>
     </qresource>
 </RCC>

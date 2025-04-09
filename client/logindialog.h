@@ -19,7 +19,9 @@ private:
     Ui::LoginDialog *ui;
 
 signals:
-    void switchRegister();
+    void sigSwitchRegister();
+private slots:
+    void on_register_btn_clicked();
 };
 
 #endif // LOGINDIALOG_H

@@ -6,10 +6,17 @@ LoginDialog::LoginDialog(QWidget *parent)
     , ui(new Ui::LoginDialog)
 {
     ui->setupUi(this);
-    connect(ui->register_btn, &QPushButton::clicked, this, &LoginDialog::switchRegister);
+    ui->forget_btn->setCursor(Qt::PointingHandCursor);
 }
 
 LoginDialog::~LoginDialog()
 {
+    qDebug("LoginDialog Destructor");
     delete ui;
 }
+
+void LoginDialog::on_register_btn_clicked()
+{
+    emit sigSwitchRegister();
+}
+

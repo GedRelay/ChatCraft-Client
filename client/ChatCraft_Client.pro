@@ -12,30 +12,32 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    HttpManager.cpp \
-    global.cpp \
-    logindialog.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    registerdialog.cpp \
-    resetdialog.cpp \
-    timerbtn.cpp
+    src/HttpManager.cpp \
+    src/global.cpp \
+    src/logindialog.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/registerdialog.cpp \
+    src/resetdialog.cpp \
+    src/timerbtn.cpp
 
 HEADERS += \
-    HttpManager.h \
-    Singleton.h \
-    global.h \
-    logindialog.h \
-    mainwindow.h \
-    registerdialog.h \
-    resetdialog.h \
-    timerbtn.h
+    include/HttpManager.h \
+    include/Singleton.h \
+    include/global.h \
+    include/logindialog.h \
+    include/mainwindow.h \
+    include/registerdialog.h \
+    include/resetdialog.h \
+    include/timerbtn.h
 
 FORMS += \
-    logindialog.ui \
-    mainwindow.ui \
-    registerdialog.ui \
-    resetdialog.ui
+    ui/logindialog.ui \
+    ui/mainwindow.ui \
+    ui/registerdialog.ui \
+    ui/resetdialog.ui
+
+INCLUDEPATH += include
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

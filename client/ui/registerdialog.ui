@@ -33,6 +33,16 @@
        <widget class="QWidget" name="page">
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
+          <widget class="QLabel" name="page_tag_label">
+           <property name="text">
+            <string>注册账号</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="verticalSpacer">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -78,7 +88,7 @@
               </size>
              </property>
              <property name="text">
-              <string>用户：</string>
+              <string>用户名：  </string>
              </property>
             </widget>
            </item>
@@ -117,12 +127,21 @@
               </size>
              </property>
              <property name="text">
-              <string>邮箱：</string>
+              <string>邮箱：    </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QLineEdit" name="email_edit">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -156,7 +175,7 @@
               </size>
              </property>
              <property name="text">
-              <string>密码：</string>
+              <string>密码：    </string>
              </property>
             </widget>
            </item>
@@ -220,7 +239,7 @@
               </size>
              </property>
              <property name="text">
-              <string>确认：</string>
+              <string>确认密码：</string>
              </property>
             </widget>
            </item>
@@ -270,7 +289,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
-            <widget class="QLabel" name="verify_label">
+            <widget class="QLabel" name="verifycode_label">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -284,12 +303,12 @@
               </size>
              </property>
              <property name="text">
-              <string>验证码：</string>
+              <string>验证码：  </string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="verify_edit">
+            <widget class="QLineEdit" name="verifycode_edit">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -305,7 +324,7 @@
             </widget>
            </item>
            <item>
-            <widget class="TimerBtn" name="get_code_btn">
+            <widget class="TimerBtn" name="get_verifycode_btn">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -326,7 +345,7 @@
           </layout>
          </item>
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="password_ruler_label">
            <property name="text">
             <string>密码要求：
 1. 至少包含 8 个字符，最多包含 20 个字符
@@ -374,7 +393,7 @@
               </size>
              </property>
              <property name="text">
-              <string>确认</string>
+              <string>注册</string>
              </property>
             </widget>
            </item>

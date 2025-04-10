@@ -20,8 +20,10 @@ private:
 
 signals:
     void sigSwitchRegister();
+    void sigSwitchReset();
 private slots:
     void on_register_btn_clicked();
+    void on_forget_btn_clicked();
 };
 
 #endif // LOGINDIALOG_H

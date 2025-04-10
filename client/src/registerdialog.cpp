@@ -47,7 +47,7 @@ RegisterDialog::~RegisterDialog()
     delete ui;
 }
 
-void RegisterDialog::on_get_code_btn_clicked()
+void RegisterDialog::on_get_verifycode_btn_clicked()
 {  // 发送验证码按钮
     // 检测email是否合规
     if(CheckEmail() == true){
@@ -56,8 +56,8 @@ void RegisterDialog::on_get_code_btn_clicked()
         json["email"] = ui->email_edit->text();
         HttpManager::GetInstance()->PostHttpReq(QUrl(gate_url_prefix + "/get_verify_code"),
                                                 json,
-                                                RequireId::ID_GET_VARIFY_CODE,
-                                                Modules::REGISTERMOD);
+                                                RequireId::ID_REGISTER_GET_VERIFY_CODE,
+                                                Modules::MOD_REGISTER);
         showTip("正在发送验证码...", false);
     }
 }
@@ -111,7 +111,7 @@ void RegisterDialog::showTip(const QString &msg, bool is_error)
 void RegisterDialog::initHttpHandles()
 {
     // 获取验证码的回调函数
-    _handlers.insert(RequireId::ID_GET_VARIFY_CODE, [this](const QJsonObject& json){
+    _handlers.insert(RequireId::ID_REGISTER_GET_VERIFY_CODE, [this](const QJsonObject& json){
         int status = json["status"].toInt();
         QString msg = json["msg"].toString();
         if(status != ErrorCodes::SUCCESS){
@@ -199,7 +199,7 @@ bool RegisterDialog::CheckPassword2()
 
 bool RegisterDialog::CheckVerifyCode()
 {
-    if(ui->verify_edit->text() == ""){
+    if(ui->verifycode_edit->text() == ""){
         showTip("验证码不能为空", true);
         return false;
     }
@@ -209,29 +209,29 @@ bool RegisterDialog::CheckVerifyCode()
 
 bool RegisterDialog::CheckAllEdit()
 {
-    this->ui->get_code_btn->setEnabled(false);
+    this->ui->get_verifycode_btn->setEnabled(false);
     if(CheckUserName() == false) return false;
     if(CheckEmail() == false) return false;
     if(CheckPassword() == false) return false;
     if(CheckPassword2() == false) return false;
-    this->ui->get_code_btn->setEnabled(true);
+    this->ui->get_verifycode_btn->setEnabled(true);
     if(CheckVerifyCode() == false) return false;
     return true;
 }
 
 void RegisterDialog::on_confirm_btn_clicked()
-{  // 确认按钮
+{  // 注册按钮
     if(CheckAllEdit() == false) return;
     QJsonObject json;
     json["user"] = ui->user_edit->text();
     json["email"] = ui->email_edit->text();
     json["passwd"] = md5Encrypt(ui->password_edit->text());
     json["passwd2"] = md5Encrypt(ui->password2_edit->text());
-    json["verifycode"] = ui->verify_edit->text();
+    json["verifycode"] = ui->verifycode_edit->text();
     HttpManager::GetInstance()->PostHttpReq(QUrl(gate_url_prefix + "/user_register"),
                                             json,
                                             RequireId::ID_USER_REGESTER,
-                                            Modules::REGISTERMOD);
+                                            Modules::MOD_REGISTER);
 }
 
 void RegisterDialog::on_user_edit_editingFinished()
@@ -258,18 +258,9 @@ void RegisterDialog::on_password2_edit_editingFinished()
 }
 
 
-void RegisterDialog::on_verify_edit_editingFinished()
+void RegisterDialog::on_verifycode_edit_editingFinished()
 {
     CheckAllEdit();
-}
-
-
-// 字符串md5加密
-QString RegisterDialog::md5Encrypt(const QString &input_str)
-{
-    QByteArray byte_array = input_str.toUtf8();
-    QByteArray hash = QCryptographicHash::hash(byte_array, QCryptographicHash::Md5);
-    return QString(hash.toHex());
 }
 
 

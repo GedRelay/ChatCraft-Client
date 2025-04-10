@@ -9,26 +9,36 @@ MainWindow::MainWindow(QWidget *parent)
     _login_dlg = new LoginDialog();
     setCentralWidget(_login_dlg);
     connect(_login_dlg, &LoginDialog::sigSwitchRegister, this, &MainWindow::SlotSwitchRegister);
+    connect(_login_dlg, &LoginDialog::sigSwitchReset, this, &MainWindow::SlotSwitchReset);
     _login_dlg->show();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete _login_dlg;
 }
 
 void MainWindow::SlotSwitchRegister()
 {
-    if(_login_dlg){
-        delete _login_dlg;
-        _login_dlg = nullptr;
-    }
     _register_dlg = new RegisterDialog();
     takeCentralWidget();
     setCentralWidget(_register_dlg);
     // 连接注册界面切换登录界面信号
     connect(_register_dlg, &RegisterDialog::sigSwitchLogin, this, &MainWindow::SlotSwitchLogin);
+    _login_dlg->hide();
     _register_dlg->show();
+}
+
+void MainWindow::SlotSwitchReset()
+{
+    _reset_dlg = new ResetDialog();
+    takeCentralWidget();
+    setCentralWidget(_reset_dlg);
+    // 连接注册界面切换登录界面信号
+    connect(_reset_dlg, &ResetDialog::sigSwitchLogin, this, &MainWindow::SlotSwitchLogin);
+    _login_dlg->hide();
+    _reset_dlg->show();
 }
 
 void MainWindow::SlotSwitchLogin()
@@ -37,10 +47,11 @@ void MainWindow::SlotSwitchLogin()
         delete _register_dlg;
         _register_dlg = nullptr;
     }
-    _login_dlg = new LoginDialog();
+    if(_reset_dlg){
+        delete _reset_dlg;
+        _reset_dlg = nullptr;
+    }
     takeCentralWidget();
     setCentralWidget(_login_dlg);
-    // 连接登录界面切换注册界面信号
-    connect(_login_dlg, &LoginDialog::sigSwitchRegister, this, &MainWindow::SlotSwitchRegister);
     _login_dlg->show();
 }

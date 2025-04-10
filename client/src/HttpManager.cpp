@@ -36,7 +36,7 @@ void HttpManager::PostHttpReq(QUrl url, QJsonObject json, RequireId req_id, Modu
         QString res = reply->readAll();
 
         // 发送信号通知完成
-        emit self->sig_http_finish(req_id, res, ErrorCodes::SUCCESS,mod);
+        emit self->sig_http_finish(req_id, res, ErrorCodes::SUCCESS, mod);
         reply->deleteLater();
         return;
     });
@@ -45,9 +45,14 @@ void HttpManager::PostHttpReq(QUrl url, QJsonObject json, RequireId req_id, Modu
 void HttpManager::slot_http_finish(RequireId req_id, QString res, ErrorCodes err, Modules mod)
 {
     // 注册模块
-    if(mod == Modules::REGISTERMOD){
+    if(mod == Modules::MOD_REGISTER){
         // 发送信号通知指定http
         emit sig_reg_mod_finish(req_id, res, err);
+    }
+
+    // 重置密码模块
+    else if(mod == Modules::MOD_RESET){
+        emit sig_reset_mod_finish(req_id, res, err);
     }
 }
 

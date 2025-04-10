@@ -20,3 +20,9 @@ void LoginDialog::on_register_btn_clicked()
     emit sigSwitchRegister();
 }
 
+
+void LoginDialog::on_forget_btn_clicked()
+{
+    emit sigSwitchReset();
+}
+

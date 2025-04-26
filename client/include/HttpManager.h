@@ -31,6 +31,7 @@ signals:
     void sig_http_finish(RequireId req_id, QString res, ErrorCodes err, Modules mod);
     void sig_reg_mod_finish(RequireId req_id, QString res, ErrorCodes err);
     void sig_reset_mod_finish(RequireId req_id, QString res, ErrorCodes err);
+    void sig_login_mod_finish(RequireId req_id, QString res, ErrorCodes err);
 };
 
 

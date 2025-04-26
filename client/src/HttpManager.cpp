@@ -54,6 +54,11 @@ void HttpManager::slot_http_finish(RequireId req_id, QString res, ErrorCodes err
     else if(mod == Modules::MOD_RESET){
         emit sig_reset_mod_finish(req_id, res, err);
     }
+
+    // 登录模块
+    else if(mod == Modules::MOD_LOGIN){
+        emit sig_login_mod_finish(req_id, res, err);
+    }
 }
 
 

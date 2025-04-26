@@ -52,7 +52,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="rc.qrc">:/assets/pic/lg.png</pixmap>
+           <pixmap resource="../rc.qrc">:/assets/pic/lg.png</pixmap>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -76,9 +76,25 @@
       </spacer>
      </item>
      <item>
+      <widget class="QLabel" name="hint_label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="user_label">
+        <widget class="QLabel" name="email_label">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -92,12 +108,12 @@
           </size>
          </property>
          <property name="text">
-          <string>用户：</string>
+          <string>邮箱：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="user_edit">
+        <widget class="QLineEdit" name="email_edit">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -151,6 +167,31 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="password_visible">
+         <property name="minimumSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -170,6 +211,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="forget_btn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="text">
           <string> 忘记密码</string>
          </property>
@@ -306,7 +350,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="rc.qrc"/>
+  <include location="../rc.qrc"/>
  </resources>
  <connections/>
 </ui>

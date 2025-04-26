@@ -5,6 +5,7 @@
 #include "logindialog.h"
 #include "registerdialog.h"
 #include "resetdialog.h"
+#include "TCPManager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,6 +25,7 @@ public slots:
     void SlotSwitchRegister();
     void SlotSwitchReset();
     void SlotSwitchLogin();
+    void SlotSwitchChat();
 
 private:
     Ui::MainWindow *ui;

@@ -13,6 +13,8 @@ CONFIG += c++17
 
 SOURCES += \
     src/HttpManager.cpp \
+    src/TCPManager.cpp \
+    src/UserManager.cpp \
     src/global.cpp \
     src/logindialog.cpp \
     src/main.cpp \
@@ -24,6 +26,8 @@ SOURCES += \
 HEADERS += \
     include/HttpManager.h \
     include/Singleton.h \
+    include/TCPManager.h \
+    include/UserManager.h \
     include/global.h \
     include/logindialog.h \
     include/mainwindow.h \

@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(_login_dlg);
     connect(_login_dlg, &LoginDialog::sigSwitchRegister, this, &MainWindow::SlotSwitchRegister);
     connect(_login_dlg, &LoginDialog::sigSwitchReset, this, &MainWindow::SlotSwitchReset);
+    connect(TCPManager::GetInstance().get(), &TCPManager::sig_switch_chatdlg, this, &MainWindow::SlotSwitchChat);
     _login_dlg->show();
 }
 
@@ -54,4 +55,10 @@ void MainWindow::SlotSwitchLogin()
     takeCentralWidget();
     setCentralWidget(_login_dlg);
     _login_dlg->show();
+}
+
+
+void MainWindow::SlotSwitchChat()
+{
+    // _login_dlg->hide();
 }
